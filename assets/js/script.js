@@ -14,14 +14,32 @@ var setDate = function () {
     // Present individual timeblocks for 9/5 
 
 var createTimeblocks = function () { 
-    
-}
-var timeOfDay = [9,10,11,12,1,2,3,4,5]
+
+    // Create array to hold hours data 
+    var timeOfDay = [9,10,11,12,1,2,3,4,5]
 
     // Create table to hold all the rows of timeblocks
-for (var i = 0; i <timeOfDay.length; i++){
-    var newTimeblock = $("<td>");
+    var newTable = $("<table>");
+
+    // Append table element to time block container
+    timeblockContainer.append(newTable);
+
+    // Create table description
+    var newTimeblockDesc = $("<td>");
+    // Append to table element
+    newTable.append(newTimeblockDesc);
+
+    // For loop to run create row for each hour 
+    for (var i = 0; i <timeOfDay.length; i++){
+        
+
+
+
+    }
+
+
 }
+
 
 
 
