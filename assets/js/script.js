@@ -26,16 +26,18 @@ var createTimeblocks = function () {
     // Append table element to time block container
     timeblockContainer.append(newTable);
 
-    // Create table description
-    var timeblockDesc = $("<td>");
-    // Append to table element
-    newTable.append(timeblockDesc);
-
-
     // For loop to run create row for each hour 
     for (var i = 0; i < timeOfDay.length; i++){
+
+
+        // Create table description
+        var timeblockDesc = $("<tr>");
+        // Append to table element
+        newTable.append(timeblockDesc);
+
+
         // Create table row
-        var tableRow = $("<tr>");
+        var tableRow = $("<td>");
         tableRow.attr("style","width:15%");
 
         // Set current time variable to hold hour format of number in timeOfDay array
@@ -47,9 +49,24 @@ var createTimeblocks = function () {
         tableRow.attr("class","row");
         // // Append table row to description block
         timeblockDesc.append(tableRow);
+
+
+        // Add rows into table
+        var tableRow1 = $("<td>");
+        tableRow1.attr("style","width:70%");
+
+        tableRow1.text("This is a test");
+        timeblockDesc.append(tableRow1);
+
+
+
     }
 
-    
+    // For loop to create row for user input
+    for (var i =0; i < timeOfDay.length; i++){
+
+
+    }
 
 }
 
