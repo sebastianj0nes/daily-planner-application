@@ -21,6 +21,7 @@ var createTimeblocks = function () {
 
     // Create table to hold all the rows of timeblocks
     var newTable = $("<table>");
+    // Add styling to make table 100% width
     newTable.attr("style","width:100%");
 
     // Append table element to time block container
@@ -29,28 +30,29 @@ var createTimeblocks = function () {
     // For loop to run create row for each hour 
     for (var i = 0; i < timeOfDay.length; i++){
 
+        // TABLE ROW
 
-        // Create table description
+        // Create table row
         var timeblockDesc = $("<tr>");
         // Append to table element
         newTable.append(timeblockDesc);
 
+        // TABLE DESC (time)
 
-        // Create table row
+        // Create table description for time frame
         var tableRow = $("<td>");
+        // Add styling to make table 15% width
         tableRow.attr("style","width:15%");
-
         // Set current time variable to hold hour format of number in timeOfDay array
-        console.log(timeOfDay[i]);        
         var currentTime = moment(timeOfDay[i],"Ha").format("ha");
-
-        // // Set text to current time
+        // Set text to current time
         tableRow.text(currentTime);
         tableRow.attr("class","row");
-        // // Append table row to description block
+        // Append table row to description block
         timeblockDesc.append(tableRow);
 
 
+        // TABLE DESC (user input)
         // Add rows into table
         var tableRow1 = $("<td>");
         tableRow1.attr("style","width:70%");
@@ -60,11 +62,12 @@ var createTimeblocks = function () {
 
 
 
-    }
-
-    // For loop to create row for user input
-    for (var i =0; i < timeOfDay.length; i++){
-
+        // // TABLE DESC (save button)
+        // // Add rows into table
+        var tableRow2 = $("<td>");
+        tableRow2.attr("style","width:15%");
+        tableRow2.text("This is a test");
+        timeblockDesc.append(tableRow2);
 
     }
 
