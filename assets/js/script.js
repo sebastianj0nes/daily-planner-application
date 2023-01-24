@@ -32,52 +32,69 @@ var createTimeblocks = function () {
 
         // TABLE ROW
 
+
         // Create table row
-        var timeblockDesc = $("<tr>");
+        var timeblockRow = $("<tr>");
+        timeblockRow.attr("class","row");
         // Append to table element
-        newTable.append(timeblockDesc);
+        newTable.append(timeblockRow);
+
+
 
         // TABLE DESC (time)
 
-        // Create table description for time frame
-        var tableRow = $("<td>");
-        // Add styling to make table 15% width
-        tableRow.attr("style","width:15%");
 
+        // Create table description for time frame
+        var tableTime = $("<td>");
+        // Add styling to make table 15% width
+        tableTime.attr("style","width:15%");
+        tableTime.addClass("hour");
         // Set current time variable to hold hour format of number in timeOfDay array
         var currentTime = moment(timeOfDay[i],"Ha").format("ha");
         console.log(currentTime);
         // Set text to current time
-        tableRow.text(currentTime);
-        tableRow.attr("class","row");
+        tableTime.text(currentTime);
         // Append table row to description block
-        timeblockDesc.append(tableRow);
+        timeblockRow.append(tableTime);
+
 
 
         // TABLE DESC (user input)
+
+
         // Add rows into table
-        var tableRow1 = $("<td>");
-        tableRow1.attr("style","width:70%");
+        var tableInput = $("<td>");
+        tableInput.attr("style","width:70%");
 
         // Add colour pallettes to past/present
             // Use stringify to convert moment and time into comparable values
         if (JSON.stringify(currentTime) < JSON.stringify(moment().format("ha"))){
-            tableRow1.addClass("past");
+            tableInput.addClass("past");
+            console.log(currentTime + " is before the current time");
         }   else if (JSON.stringify(currentTime) > JSON.stringify(moment().format("ha"))){
-            tableRow1.addClass("future");
+            tableInput.addClass("future");
+            console.log(currentTime + " is after the current time");
         } else {
-            tableRow1.addClass("present");
+            tableInput.addClass("present");
         }
+    
+        tableInput.addClass("description");  
 
-        tableRow1.text("This is a test");
-        timeblockDesc.append(tableRow1);
+
+
+
+
+        timeblockRow.append(tableInput);
 
 
 
         // // TABLE DESC (save button)
+
+
+
         // // Add rows into table
-        var tableRow2 = $("<td>");
-        tableRow2.attr("style","width:15%");
+        var tableButton = $("<td>");
+        tableButton.attr("style","width:15%");
 
         // Create button to save 
         var saveButton = $("<button>");
@@ -86,8 +103,8 @@ var createTimeblocks = function () {
         saveButton.addClass("btn-lg");
 
         // Append button and desc to timeblock 
-        tableRow2.append(saveButton);
-        timeblockDesc.append(tableRow2);
+        tableButton.append(saveButton);
+        timeblockRow.append(tableButton);
     }
 
 }
