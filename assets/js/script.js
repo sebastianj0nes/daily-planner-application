@@ -86,6 +86,9 @@ var createTimeblocks = function () {
 
         var userInput = $("<textarea>");
         userInput.attr("style","width:100%");
+        userInput.attr("id");
+
+        localStorage.setItem("input",userInput.textContent);
         tableInput.append(userInput);
         timeblockRow.append(tableInput);
 
@@ -94,22 +97,35 @@ var createTimeblocks = function () {
         // SAVE BUTTON
 
 
-
         //  Add rows into table
         var tableButton = $("<td>");
         tableButton.attr("style","width:15%");
 
         // Create button to save 
-        var saveButton = $("<button>");
+        var saveButton = $("<input>");
         saveButton.attr("class","saveBtn");
+        saveButton.attr("type","submit");
+        saveButton.attr("value","Submit");
         saveButton.text("Save event");
+        saveButton.attr("id",i);
         saveButton.addClass("btn-lg");
 
         // Append button and desc to timeblock 
         tableButton.append(saveButton);
         timeblockRow.append(tableButton);
 
-      
+        saveButton.on("click",function(event){ 
+
+            // Initialise variables to hold value of button clicked
+            var element = event.target;
+            var buttonID = element.getAttribute("id");
+
+            var userInput = $('textarea').val();
+            console.log(userInput);
+
+        })
+
+
     }
 
 }
