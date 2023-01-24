@@ -42,7 +42,7 @@ var createTimeblocks = function () {
 
 
 
-        // TABLE DESC (time)
+        // TIME FRAME
 
 
         // Create table description for time frame
@@ -51,16 +51,14 @@ var createTimeblocks = function () {
         tableTime.attr("style","width:15%");
         tableTime.addClass("hour");
         // Set current time variable to hold hour format of number in timeOfDay array
-        var currentTime = moment(timeOfDay[i],"Ha").format("ha");
-        console.log(currentTime);
+        var currentTime = moment(timeOfDay[i],"Ha").format("Ha");
         // Set text to current time
         tableTime.text(currentTime);
         // Append table row to description block
         timeblockRow.append(tableTime);
 
 
-
-        // TABLE DESC (user input)
+        // USER INPUT
 
 
         // Add rows into table
@@ -69,17 +67,23 @@ var createTimeblocks = function () {
 
         // Add colour pallettes to past/present
             // Use stringify to convert moment and time into comparable values
-        if (JSON.stringify(currentTime) < JSON.stringify(moment().format("ha"))){
+
+        // Initialise comparable values
+        var workdayTime = moment(timeOfDay[i],"Ha").format("H");
+        var realTime = moment().format("H");
+
+        if (workdayTime < realTime){
             tableInput.addClass("past");
-            console.log(currentTime + " is before the current time");
-        }   else if (JSON.stringify(currentTime) > JSON.stringify(moment().format("ha"))){
+            console.log(workdayTime + " is less than " + realTime);
+        }   else if (workdayTime > realTime){
             tableInput.addClass("future");
-            console.log(currentTime + " is after the current time");
+            console.log(workdayTime + " is more than " + realTime);
         } else {
             tableInput.addClass("present");
+            console.log(workdayTime + " is right now");
         }
 
-        
+
         var userInput = $("<textarea>");
         userInput.attr("style","width:100%");
         tableInput.append(userInput);
@@ -87,11 +91,11 @@ var createTimeblocks = function () {
 
 
 
-        // // TABLE DESC (save button)
+        // SAVE BUTTON
 
 
 
-        // // Add rows into table
+        //  Add rows into table
         var tableButton = $("<td>");
         tableButton.attr("style","width:15%");
 
@@ -104,6 +108,8 @@ var createTimeblocks = function () {
         // Append button and desc to timeblock 
         tableButton.append(saveButton);
         timeblockRow.append(tableButton);
+
+      
     }
 
 }
@@ -117,3 +123,13 @@ createTimeblocks();
     // Save event in local storage when save button clicked on individual timeblock
 
     // Persist events between refreshes of a page
+
+
+
+
+    // Change class on timeblock based on if its before/at/after current time
+        // How?
+            // Get current time in numeric format
+
+            // Get chosen time in numeric format; 
+      
