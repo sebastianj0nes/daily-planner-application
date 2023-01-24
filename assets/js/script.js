@@ -43,8 +43,10 @@ var createTimeblocks = function () {
         var tableRow = $("<td>");
         // Add styling to make table 15% width
         tableRow.attr("style","width:15%");
+
         // Set current time variable to hold hour format of number in timeOfDay array
         var currentTime = moment(timeOfDay[i],"Ha").format("ha");
+
         // Set text to current time
         tableRow.text(currentTime);
         tableRow.attr("class","row");
@@ -61,14 +63,20 @@ var createTimeblocks = function () {
         timeblockDesc.append(tableRow1);
 
 
-
         // // TABLE DESC (save button)
         // // Add rows into table
         var tableRow2 = $("<td>");
         tableRow2.attr("style","width:15%");
-        tableRow2.text("This is a test");
-        timeblockDesc.append(tableRow2);
 
+        // Create button to save 
+        var saveButton = $("<button>");
+        saveButton.attr("class","saveBtn");
+        saveButton.text("Save event");
+        saveButton.addClass("btn-lg");
+
+        // Append button and desc to timeblock 
+        tableRow2.append(saveButton);
+        timeblockDesc.append(tableRow2);
     }
 
 }
