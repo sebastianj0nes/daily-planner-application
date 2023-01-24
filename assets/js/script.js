@@ -26,6 +26,7 @@ var createTimeblocks = function () {
 
     // Append table element to time block container
     timeblockContainer.append(newTable);
+    timeblockContainer.addClass("time-block");
 
     // For loop to run create row for each hour 
     for (var i = 0; i < timeOfDay.length; i++){
@@ -77,13 +78,11 @@ var createTimeblocks = function () {
         } else {
             tableInput.addClass("present");
         }
-    
-        tableInput.addClass("description");  
 
-
-
-
-
+        
+        var userInput = $("<textarea>");
+        userInput.attr("style","width:100%");
+        tableInput.append(userInput);
         timeblockRow.append(tableInput);
 
 
