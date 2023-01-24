@@ -69,20 +69,10 @@ var createTimeblocks = function () {
             // Use stringify to convert moment and time into comparable values
 
         // Initialise comparable values
-        var workdayTime = moment(timeOfDay[i],"Ha").format("H");
-        var realTime = moment().format("H");
-
-        if (workdayTime < realTime){
-            tableInput.addClass("past");
-            console.log(workdayTime + " is less than " + realTime);
-        }   else if (workdayTime > realTime){
-            tableInput.addClass("future");
-            console.log(workdayTime + " is more than " + realTime);
-        } else {
-            tableInput.addClass("present");
-            console.log(workdayTime + " is right now");
-        }
-
+      
+        var todayDate = moment([timeOfDay[i]], 'HH');
+        var pastDate = moment();
+    
 
         var userInput = $("<textarea>");
         userInput.attr("style","width:100%");
@@ -93,6 +83,16 @@ var createTimeblocks = function () {
         timeblockRow.append(tableInput);
 
 
+
+         if (todayDate.isBefore(pastDate)) {
+            tableInput.addClass("past");
+        }else if(todayDate.isAfter(pastDate)){
+            tableInput.addClass("future");
+        } else {
+            tableInput.addClass("present");
+        }
+        
+        
 
         // SAVE BUTTON
 
@@ -148,4 +148,3 @@ createTimeblocks();
             // Get current time in numeric format
 
             // Get chosen time in numeric format; 
-      
