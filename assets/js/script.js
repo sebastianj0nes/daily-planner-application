@@ -46,7 +46,7 @@ var createTimeblocks = function () {
 
         // Set current time variable to hold hour format of number in timeOfDay array
         var currentTime = moment(timeOfDay[i],"Ha").format("ha");
-
+        console.log(currentTime);
         // Set text to current time
         tableRow.text(currentTime);
         tableRow.attr("class","row");
@@ -59,8 +59,19 @@ var createTimeblocks = function () {
         var tableRow1 = $("<td>");
         tableRow1.attr("style","width:70%");
 
+        // Add colour pallettes to past/present
+            // Use stringify to convert moment and time into comparable values
+        if (JSON.stringify(currentTime) < JSON.stringify(moment().format("ha"))){
+            tableRow1.addClass("past");
+        }   else if (JSON.stringify(currentTime) > JSON.stringify(moment().format("ha"))){
+            tableRow1.addClass("future");
+        } else {
+            tableRow1.addClass("present");
+        }
+
         tableRow1.text("This is a test");
         timeblockDesc.append(tableRow1);
+
 
 
         // // TABLE DESC (save button)
@@ -84,8 +95,6 @@ var createTimeblocks = function () {
 createTimeblocks();
 
 
-    // Color-code timeblock based on current time - 
-        // e.g grey for past, red for current & green for future
 
     // Allow user to enter event when click on timeblock
      
