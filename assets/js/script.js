@@ -73,6 +73,8 @@ var createTimeblocks = function () {
         var todayDate = moment([timeOfDay[i]], 'HH');
         var pastDate = moment();
     
+        console.log(todayDate + " is today");
+        console.log(pastDate + " is past date");
 
         var userInput = $("<textarea>");
         userInput.attr("style","width:100%");
@@ -83,14 +85,15 @@ var createTimeblocks = function () {
         timeblockRow.append(tableInput);
 
 
-
-         if (todayDate.isBefore(pastDate)) {
+        
+        if (todayDate.isBefore(pastDate)) {
             tableInput.addClass("past");
-        }else if(todayDate.isAfter(pastDate)){
+        } else if(todayDate.isAfter(pastDate)){
             tableInput.addClass("future");
-        } else {
+        } else{
             tableInput.addClass("present");
         }
+
         
         
 
@@ -116,6 +119,8 @@ var createTimeblocks = function () {
 
         saveButton.on("click",function(event){ 
 
+            event.stopPropagation();
+            event.preventDefault();
             // Initialise variables to hold value of button clicked
             var element = event.target;
             var buttonID = element.getAttribute("id");
