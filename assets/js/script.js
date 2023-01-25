@@ -73,14 +73,15 @@ var createTimeblocks = function () {
         var todayDate = moment([timeOfDay[i]], 'HH');
         var pastDate = moment();
     
-        console.log(todayDate + " is today");
-        console.log(pastDate + " is past date");
 
         var userInput = $("<textarea>");
         userInput.attr("style","width:100%");
-        userInput.attr("id");
+        userInput.attr("id", i);
 
-        localStorage.setItem("input",userInput.textContent);
+
+
+
+
         tableInput.append(userInput);
         timeblockRow.append(tableInput);
 
@@ -117,18 +118,21 @@ var createTimeblocks = function () {
         tableButton.append(saveButton);
         timeblockRow.append(tableButton);
 
+
         saveButton.on("click",function(event){ 
 
             event.stopPropagation();
             event.preventDefault();
             // Initialise variables to hold value of button clicked
             var element = event.target;
-            var buttonID = element.getAttribute("id");
-
-            var userInput = $('textarea').val();
+            
+            var userInput = localStorage.getItem("userInput");
             console.log(userInput);
-
+            
+            
+        
         })
+      
 
 
     }
@@ -137,6 +141,7 @@ var createTimeblocks = function () {
 
 createTimeblocks();
 
+  
 
 
     // Allow user to enter event when click on timeblock
